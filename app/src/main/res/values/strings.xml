@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Coil_app</string>
+    <string name="switch_text">Change Image</string>
 </resources>
