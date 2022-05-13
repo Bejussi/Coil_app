@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import coil.load
+import coil.transform.CircleCropTransformation
+import coil.transform.RoundedCornersTransformation
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,11 +16,19 @@ class MainActivity : AppCompatActivity() {
         switch_image.setOnCheckedChangeListener { _, b ->
             if (b) {
                 Toast.makeText(this,"First image load",Toast.LENGTH_LONG).show()
-                imageView.load("https://upload.wikimedia.org/wikipedia/uk/1/18/Cuphead_icon.jpg")
+                imageView.load("https://upload.wikimedia.org/wikipedia/uk/1/18/Cuphead_icon.jpg"){
+                    crossfade(true)
+                    crossfade(1000)
+                    transformations(CircleCropTransformation())
+                }
             }
             else {
                 Toast.makeText(this,"Second image load",Toast.LENGTH_LONG).show()
-                imageView.load("https://bonduelle.ru/upload/medialibrary/81f/81fb1f09e1159ffcf8a6f89a3848bfee.jpg")
+                imageView.load("https://bonduelle.ru/upload/medialibrary/81f/81fb1f09e1159ffcf8a6f89a3848bfee.jpg"){
+                    crossfade(true)
+                    crossfade(1000)
+                    transformations(RoundedCornersTransformation(10f))
+                }
             }
         }
     }
